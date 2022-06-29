@@ -2,6 +2,9 @@ FROM nvidia/cuda:11.0-cudnn8-runtime-ubuntu18.04
 
 
 #set up environment
+RUN apt-get install unzip
+RUN apt-get -y install python3
+RUN apt-get -y install python3-pip
 RUN rm /etc/apt/sources.list.d/cuda.list
 RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 RUN apt-key del 7fa2af80

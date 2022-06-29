@@ -2,14 +2,15 @@ FROM nvidia/cuda:11.0-cudnn8-runtime-ubuntu18.04
 
 
 #set up environment
-# RUN apt-get install unzip
-RUN apt-get -y install python3
-RUN apt-get -y install python3-pip
 RUN rm /etc/apt/sources.list.d/cuda.list
 RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 RUN apt-key del 7fa2af80
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
+RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
+RUN apt-get install unzip
+RUN apt-get -y install python3
+RUN apt-get -y install python3-pip
 # Copy our application code
 WORKDIR /var/app
 
